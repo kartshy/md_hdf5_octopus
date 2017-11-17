@@ -75,7 +75,7 @@ void output(In &in, Atom &atom, Force* force, Neighbor &neighbor, Comm &comm,
   plist_id = H5Pcreate(H5P_FILE_ACCESS);
   H5Pset_fapl_mpio(plist_id,  MPI_COMM_WORLD, MPI_INFO_NULL);
 
-  file_id = H5Fcreate("../file.h5", H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT);
+  file_id = H5Fcreate("../file.h5", H5F_ACC_TRUNC, H5P_DEFAULT, plist_id);
 
   /*
    * Create the dataspace for the dataset.
@@ -230,7 +230,7 @@ void output(In &in, Atom &atom, Force* force, Neighbor &neighbor, Comm &comm,
 
     return;
   }
-  H5LTset_attribute_int (file_id, "/atoms", "lostatoms", &nlostall, 1 );
+  //H5LTset_attribute_int (file_id, "/atoms", "lostatoms", &nlostall, 1 );
 
   /* long-range energy and pressure corrections Whats this???*/
 
